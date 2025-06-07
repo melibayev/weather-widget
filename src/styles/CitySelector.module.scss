@@ -1,0 +1,38 @@
+.city-selector {
+    position: relative;
+    width: 100%;
+    margin-bottom: 90px;
+    width: 100%;
+    input {
+        position: absolute;
+        width: 100%;
+        padding: 10px 16px 10px 32px;
+        background-color: #fff;
+        color: #000;
+        border: none;
+        outline: none;  
+        border-radius: 20px;
+        transition: .1s;
+        &:focus {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+    svg {
+     position: absolute;
+     top: 8px;
+     left: 10px;
+     color: #000;
+     z-index: 2;   
+    }
+}
+.dropdown {
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    padding: 4px 20px;
+    max-height: 54px;
+    list-style-type: none;
+    overflow-y: auto;
+    background-color: #fff;
+}

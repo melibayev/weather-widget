@@ -1,0 +1,13 @@
+.settings-panel {
+    button {
+        padding: 8px;
+        font-size: 24px;
+        color: grey;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    .active {
+        color: #fff;
+    }
+}

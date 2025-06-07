@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react';
+import WeatherWidget from './components/WeatherWidget';
+import { ThemeProvider, ThemeContext } from './context/ThemeContext';
+
+const AppContent = () => {
+  const { theme, styles } = useContext(ThemeContext);
+  const currentStyle = styles[theme];
+
+  return (
+    <div style={{ 
+      backgroundColor: currentStyle.backgroundColor,
+      color: currentStyle.color, 
+      minHeight: '100vh', 
+      padding: '10px',
+      backgroundImage: currentStyle.backgroundImage,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+       }}>
+      <WeatherWidget />
+    </div>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

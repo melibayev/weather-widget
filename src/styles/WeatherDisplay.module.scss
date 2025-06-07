@@ -1,0 +1,119 @@
+.weather-display {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255,255,255, 0.3);
+    &-city {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-temp {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        p {
+            font-size: 54px;
+        }
+    }
+    &-description {
+        margin: 16px 0;
+        font-size: 24px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    &-summary {
+        margin-bottom: 16px;
+        text-align: center;
+    }
+    &-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        & > div {
+            padding: 16px;
+            border-radius: 20px;
+            background-color: rgba(255,255,255, 0.6);
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 12px;
+                column-gap: 8px;
+                img {
+                    max-width: 30px;
+                }
+            }
+            p {
+                font-size: 24px;
+                text-align: center;
+            }
+        }
+    }
+    h2 {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    &-humidity {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        &-progress {
+            span {
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                margin-left: -10px;
+                &:nth-child(2) {
+                    background-color: rgb(208, 138, 70);
+                }
+                &:nth-child(3) {
+                    background-color: rgb(214, 183, 80);
+                }
+                &:nth-child(4) {
+                    background-color: rgb(229, 202, 106);
+                }
+                &:nth-child(5) {
+                    background-color: rgb(246, 222, 130);
+                }
+            }
+            &-active {
+                margin: 0 !important;
+                background-color: rgb(224, 83, 80);
+            }
+        }
+        & > p {
+            font-size: 24px;
+            text-align: end;
+        }
+        &-lvl {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            &-info {
+                display: flex;
+                align-items: center;
+                column-gap: 10px;
+                span {
+                    display: inline-block;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                }
+                .safe {
+                    background-color: rgb(246, 222, 130);
+                }
+                .safe-1 {
+                    background-color: rgb(214, 183, 80)
+                }
+                .dangerous {
+                    background-color: rgb(208, 138, 70);
+                }
+                .dangerous-1 {
+                    background-color: rgb(224, 83, 80)
+                }
+            }
+        }
+    }
+}
