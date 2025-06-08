@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/ThemeContext';
 import styles from '../styles/ThemeChange.module.scss'
 
 const ThemeChange = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(ThemeContext);
 
   return (
     <div className={styles['switch-container']}>
@@ -12,7 +12,7 @@ const ThemeChange = () => {
           defaultChecked={true}
           id="checkbox"
           type="checkbox"
-          onChange={toggleTheme} // 👈 Add this
+          onChange={toggleTheme} 
         />
         <span className={styles['slider']}>
           <div className={styles['star star_1']} />

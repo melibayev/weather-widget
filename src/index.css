@@ -2,10 +2,12 @@
     padding: 0;
     margin: 0;
 }
+
 *, *::before,
 *::after {
   box-sizing: border-box;
 }
+
 @font-face {
   font-family: 'Sora';
   src: url('./assets/fonts/Sora/static/Sora-Regular.ttf') format('truetype');
@@ -20,6 +22,34 @@
   font-style: normal;
 }
 
+body.light {
+  --bg-color: #f8f9fa;
+  --card-bg-color: rgba(0, 0, 0, 0.4);
+  --text-color: #f8f9fa;
+  --accent-color: #0d6efd;
+  --hover-color: rgb(52, 51, 60);
+  --bg-image: url('https://www.pixelstalk.net/wp-content/uploads/2016/07/Download-Free-Weather-Background.jpg');
+}
+
+body.dark {
+  --bg-color: #212529;
+  --card-bg-color: rgba(256, 256, 256, 0.4);
+  --text-color: #212529;
+  --accent-color: #0d6efd;
+  --hover-color: rgba(256, 256, 256, 0.5);
+  --bg-image: url('https://4kwallpapers.com/images/wallpapers/cumulus-clouds-storm-dark-clouds-sun-light-extreme-weather-3440x1440-3609.jpg');
+}
+
 body {
   font-family: 'Sora', sans-serif;
 }  
+
+.main {
+  min-height: 100vh;
+  padding: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: var(--bg-image);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}

@@ -1,5 +1,16 @@
 .data-container {
+    padding: 8px;
     width: 100%;
-    border-radius: 8px;
-    background-color: rgba(255,255,255, 0.3);
+    border-radius: 20px;
+    background-color: var(--card-bg-color);
+    text {
+        fill: var(--text-color);
+    }
+    polyline {
+        stroke: var(--accent-color);
+        fill: none;
+    }
+    circle {
+        fill: var(--accent-color);
+    }
 }

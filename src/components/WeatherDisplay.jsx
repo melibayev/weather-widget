@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import { getWeatherSummary } from '../utils/aiHelper';
+
 import styles from '../styles/WeatherDisplay.module.scss';
 
 const WeatherDisplay = ({ state }) => {
@@ -7,6 +10,7 @@ const WeatherDisplay = ({ state }) => {
   const cityName = state.displayData?.city?.name;
   const countryCode = state.displayData?.city?.country;
   
+  // finding current time of city
   const timezoneOffset = state.displayData?.city?.timezone;
   const utcTimestamp = Date.now() + new Date().getTimezoneOffset() * 60000;
   const localTime = new Date(utcTimestamp + timezoneOffset * 1000);
@@ -17,6 +21,7 @@ const WeatherDisplay = ({ state }) => {
 
   const [weatherSummary, setWeatherSummary] = useState('');
 
+  // making summary of weather using gemini
   useEffect(() => {
     async function fetchSummary() {
       const prompt = `without greetings just give a friendly, and short 2-line weather summary for ${cityName}, ${countryCode}. The weather is ${weather?.weather[0].description}, temperature is ${weather?.main.temp}°, feels like ${weather?.main.feels_like}°
@@ -30,11 +35,18 @@ const WeatherDisplay = ({ state }) => {
     }
   }, [cityName, countryCode, weather, state.unit]);
 
-  if (!weather) return <p>Loading...</p>;
+  if (!weather) {
+    return (
+      <div className={styles['weather-display']}>
+        <Skeleton enableAnimation baseColor='rgba(256,256,256, 0.5)' highlightColor='rgba(255,255,255, 0.1)' height={30} width={200}/>
+        <Skeleton enableAnimation baseColor='rgba(256,256,256, 0.5)' highlightColor='rgba(255,255,255, 0.1)' count={3}/>
+        <Skeleton enableAnimation baseColor='rgba(256,256,256, 0.5)' highlightColor='rgba(255,255,255, 0.1)' height={480} borderRadius={20} />
+      </div>
+    );
+  }
 
-  const { temp, feels_like, humidity, pressure, visibility } = weather.main;
+  const { temp, feels_like, humidity, pressure } = weather.main;
   const wind = weather.wind.speed;
-  const weatherMain = weather.weather[0].main;
   const description = weather.weather[0].description;
   const rainChance = weather.pop !== undefined ? `${Math.round(weather.pop * 100)}%` : 'N/A';
   const pressureInInches = (pressure * 0.02953).toFixed(1);
@@ -43,8 +55,8 @@ const WeatherDisplay = ({ state }) => {
   return (
     <div className={styles['weather-display']}>
       <div className={styles['weather-display-city']}>
-        <h4>{cityName}, {countryCode}</h4>
-        <p>{formattedTime}</p>
+      <h4>{cityName}, {countryCode}</h4>
+      <p>{formattedTime}</p>
       </div>
       <div className={styles['weather-display-temp']}>
         <p className={styles['weather-display-temp']}>{temp.toFixed(1)}°{state.unit === 'metric' ? 'C' : 'F'}</p>
@@ -86,7 +98,6 @@ const WeatherDisplay = ({ state }) => {
           <p>{state.unit === 'metric' ? `${wind} m/s` : `${wind.toFixed(1)} mph`}</p>
         </div>
       </div>
-
       <h2>Humidity</h2>
       <div className={styles['weather-display-humidity']}>
         <div className={styles['weather-display-humidity-progress']}>
@@ -98,7 +109,6 @@ const WeatherDisplay = ({ state }) => {
         </div>
         <p>{humidity}%</p>
       </div>
-
       <div className={styles['weather-display-humidity-lvl']}>
         <div>
           <p>Safe</p>

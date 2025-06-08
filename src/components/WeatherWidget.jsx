@@ -5,12 +5,12 @@ import ForecastList from './ForecastList';
 import DataVisualization from './DataVisualization';
 import SettingsPanel from './SettingsPanel';
 import ErrorBoundary from './ErrorBoundary';
+import ThemeChange from './ThemeChange';
+import WeatherMap from './WeatherMap';
 import { useWeatherData } from '../hooks/useWeatherData';
 import { useIsMobile } from '../hooks/useIsMobile'; 
 
 import styles from '../styles/WeatherWidget.module.scss'
-import ThemeChange from './ThemeChange';
-import WeatherMap from './WeatherMap';
 
 
 const WeatherWidget = () => {

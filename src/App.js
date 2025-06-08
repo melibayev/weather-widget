@@ -1,21 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import WeatherWidget from './components/WeatherWidget';
-import { ThemeProvider, ThemeContext } from './context/ThemeContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 const AppContent = () => {
-  const { theme, styles } = useContext(ThemeContext);
-  const currentStyle = styles[theme];
 
   return (
-    <div style={{ 
-      backgroundColor: currentStyle.backgroundColor,
-      color: currentStyle.color, 
-      minHeight: '100vh', 
-      padding: '10px',
-      backgroundImage: currentStyle.backgroundImage,
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-       }}>
+    <div className='main'>
       <WeatherWidget />
     </div>
   );

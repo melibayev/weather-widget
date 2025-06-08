@@ -1,5 +1,5 @@
 .weather-widget {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     &-container {
         display: grid;
@@ -12,6 +12,8 @@
     &-info {
         padding: 20px;
         overflow: auto;
+        scrollbar-width: thin;       
+        scrollbar-color: var(--text-color) transparent; 
         &-settings {
             display: flex;
             align-items: center;
@@ -25,6 +27,19 @@
             align-items: center;
             gap: 12px;
         }
+    }
+    // scrollbar styles
+    &-info::-webkit-scrollbar {
+        height: 6px;      
+    }
+    
+    &-info::-webkit-scrollbar-track {
+    background: transparent; 
+    }
+    
+    &-info::-webkit-scrollbar-thumb {
+    background-color: var(--text-color);
+    border-radius: 3px;
     }
 }
 

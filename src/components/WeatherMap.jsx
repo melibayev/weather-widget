@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import styles from '../styles/WeatherMap.module.scss'
 
 const WeatherMap = ({ state, zoom = 6 }) => {
@@ -14,7 +16,7 @@ const WeatherMap = ({ state, zoom = 6 }) => {
     setLoading(true);
     setError(null);
 
-    // Fetch coordinates from OpenStreetMap Nominatim API
+    // fetching coordinates from OpenStreetMap Nominatim API
     fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city)}`)
       .then((res) => res.json())
       .then((data) => {
@@ -31,7 +33,13 @@ const WeatherMap = ({ state, zoom = 6 }) => {
       });
   }, [city]);
 
-  if (loading) return <p>Loading map...</p>;
+  if (loading) {
+    return (
+      <div>
+        <Skeleton enableAnimation baseColor='rgba(256,256,256, 0.5)' highlightColor='rgba(255,255,255, 0.1)' height={240} borderRadius={20} />
+      </div>
+    );
+  }
   if (error) return <p>{error}</p>;
   if (!coords.lat || !coords.lon) return <p>Coordinates not available</p>;
 

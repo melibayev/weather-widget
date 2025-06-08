@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { debounce } from '../utils/debounce';
 import { MdLocationPin } from "react-icons/md";
 import styles from '../styles/CitySelector.module.scss'
+
 const cities = ['Tashkent', 'London', 'New York', 'Tokyo', 'Sydney', 'Cairo'];
 
 const CitySelector = ({ dispatch }) => {
@@ -10,7 +11,7 @@ const CitySelector = ({ dispatch }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Filter cities with debounce
+  // filtering cities
   useEffect(() => {
     const handler = debounce(() => {
       const results = cities.filter(city =>
@@ -21,7 +22,7 @@ const CitySelector = ({ dispatch }) => {
     handler();
   }, [search]);
 
-  // Close dropdown on outside click
+  // closing dropdown
   useEffect(() => {
     const close = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
