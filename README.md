@@ -1,4 +1,5 @@
-# 🌦️ Weather Dashboard App
+![Weather Widget](https://github.com/melibayev/weather-widget/blob/main/src/assets/image/demo-light.png)
+# 🌦️ Weather App
 
 ## 🚀 Features
 
