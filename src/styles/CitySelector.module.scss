@@ -54,3 +54,14 @@
         border-radius: 3px;
     }
 }
+
+@media (max-width: 800px) {
+    .city-selector {
+        input {
+            font-size: 16px;
+        }
+    }
+    .dropdown {
+        top: 39px;
+    }
+}
