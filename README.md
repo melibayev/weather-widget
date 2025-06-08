@@ -38,6 +38,10 @@ npm install
 ```bash
 REACT_APP_WEATHER_API_KEY=your_openweather_api_key
 REACT_APP_GEMINI_API_KEY=your_gemini_api_key
+
+//if you do not have api keys, you can use these for testing:
+REACT_APP_OWM_API_KEY=eb131c2c754fff81f7bcb44d0470aaa6
+REACT_APP_GEMINI_API_KEY=AIzaSyCJrBODcPP8GH8Pk7ZhiqoXFwkqBfU0P1k
 ```
 4. Run the app:
 ```bash
