@@ -1,10 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Load API key (ensure it's in your .env file as REACT_APP_GEMINI_API_KEY)
 const API_KEY = process.env.REACT_APP_GEMINI_API_KEY;
 console.log("Gemini API Key:", API_KEY);
 
-// Create the model with correct generation config
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export async function getWeatherSummary(prompt) {
